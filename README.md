@@ -6,15 +6,25 @@ Desafio para criar um formulário de pessoa física utilizando de tecnologias es
 Precisamos que você construa um cadastro de pessoa física contendo as seguintes informações:
 
 ·      ID;
+
 ·      Nome Completo *;
+
 ·      Data de Nascimento *;
+
 ·      CPF *;
+
 ·      CEP *;
+
 ·      Endereço *;
+
 ·      Número;
+
 ·      Bairro *;
+
 ·      Cidade *;
+
 ·      Estado *;
+
 ·      Complemento;
 
 ## Regras e critérios:
