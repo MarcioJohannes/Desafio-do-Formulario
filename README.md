@@ -31,13 +31,17 @@ O desenvolvimento deve ser feito usando as seguintes tecnologias: NodeJS, Bootst
 ## O que foi alcançado:
 
 -Utilização de todas as técnologias exigidas pelo desafio, cedendo um grande aprendizado;
+
 -Criação do banco de dados MySQL, com a utilização de ID (uuid) como chave primária e CPF como unique. Dessa forma, é possível evitar que exista mais de uma pessoa cadastrada no banco de dados com o mesmo CPF;
+
 -Criação do site HTML com o boostratp 4.0, com todos os campos exigidos no desafio, além do preenchimento automático dos campos obrigatórios relacionados ao endereço pelo CEP com a utilização de um script.
+
 -Criação de dois scripts "injectBD.js" e "selectBD.js", utilizados para ligar o JavaScript com o MySQL e permitir o preenchimento do banco de dados a partir de valores definidos no script (injectBD.js), e a consulta do campo ID gerado em uuid pelo script de inject, de acordo com o CPF digitado no script (selectBD.js).
 
 ## O que **não** foi alcançado::
 
 -Validação do campo CPF com o padrão estabelecido pela receita federal;
+
 -Linkagem do JavaScript com o HTML para preencher automáticamente o script com os valores digitados nos campos do site.
 
 ## Requisitos:
@@ -45,7 +49,7 @@ O desenvolvimento deve ser feito usando as seguintes tecnologias: NodeJS, Bootst
 
 https://nodejs.org/en/download/
 
-E baixar o instalador de acordo com o seu sistema operacional, instalar e pronto, o NodeJS já está instalado e pronto para uso.
+E baixar o instalador de acordo com o seu sistema operacional, lembre de instalar o NodeJS e o node-modulos dentro da pasta do "projeto NEW". Também instale o módulo do MySQL para o NodeJS, para que seja possível usar os scripts
 
 2°: Após a primeira parte, é necessário instalar o banco de dados na sua maquina. Existem diversas formas de fazer isso, mas a utilizada para a criação do banco de dados vai ser cedida no tutorial a seguir:
 
