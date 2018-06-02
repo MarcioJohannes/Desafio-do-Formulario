@@ -1,0 +1,201 @@
+﻿<html>
+    <head>
+    <title>Projeto Zimut</title>
+      <script src="//cdn.rawgit.com/fdaciuk/iscpf/v1.0.6/dist/is-cpf.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script>
+        import isCpf from 'iscpf'
+        const isCpf = require('iscpf')  
+        define(['../dist/is-cpf.min'], function (isCpf) {
+  // ...
+})
+            </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <!-- Adicionando Javascript -->
+    <script type="text/javascript" >
+
+        $(document).ready(function() {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+          
+            }
+            
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#rua").val("?");
+                        $("#bairro").val("?");
+                        $("#cidade").val("?");
+                        $("#uf").val("?");
+                       
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                                $("#ibge").val(dados.ibge);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não foi encontrado!");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP é inválido!");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+
+    </script>
+        <script src="//cdn.rawgit.com/fdaciuk/iscpf/v1.0.6/dist/is-cpf.min.js"></script>
+        <script>;(function (inputCPF) {
+  // ...
+})(window.inputCPF)
+console.log(isCpf('75300153206'))
+            </script>
+        <style>
+            div#interface {
+                margin:auto;
+                width:700px;
+                background-color:lightblue;
+            }
+            p{
+                text-weight:bolder;
+                text-align:left;
+                font-size:20pt;
+                text-decoration:underline;
+            }
+
+            form{
+                width: 700px;
+                margin: auto;
+            }
+
+            fieldset{
+                border-color:#cecece;
+                margin: 20px;
+            }
+            fieldset#usuario{
+                background:url("imagem/icone-contato.png") no-repeat 95% 95%;
+            }
+
+            fieldset#endereco{
+                background:url("imagem/icone-endereco.png") no-repeat 95% 35%;
+            }
+            input{
+                font-family: sans-serif;
+                font-weight: normal;
+                font-size: 13pt;
+                background-color:rgba(255,255,255,.4);
+            }
+            input:hover {
+                background-color:#cecece;
+            }
+
+        </style>
+    </head>
+
+    <body>
+    <!-- Inicio do formulario -->
+      <form method="get"  id="formVali" data-toggle="validator" role="form" action=".">
+<div id="interface">
+          <fieldset id="usuario">
+              <p>Informações do usuário</p>
+          <div class="form-row">
+          </div>
+        <div class="form-group col-md-6">
+        <label for="textNome"  class="control-label">Nome<span style="color:red;">*</span></label>
+    <input id="textNome" maxlength="100" class="form-control"  placeholder="Nome completo..." type="text" required>
+    </div>
+          <div class="form-group col-md-6">
+      <label for="inputData">Data de Nascimento<span style="color:red;">*</span</label>
+      <input type="date" class="form-control" id="inputData" placeholder="Nome">
+    </div>
+              <div class="form-group col-md-6">
+                  <label for="inputCPF">CPF<span style="color:red;">*</span</label>
+                  <input type="number" class="form-control" id="inputCPF" placeholder="Apenas números..." maxlength="11" type="text" required>
+              </div>
+          </fieldset>
+
+    <fieldset id="endereco">
+        <p>Endereço do usuário</p>
+        <div class="form-group col-md-6">
+            <label for="cep">Cep<span style="color:red;">*</span>
+                <input class="form-control" type="text" id="cep" size="10" placeholder="Seu cep..." required /></label><br/>
+        </div>
+          <div class="form-group col-md-6">
+             <label for="rua">Endereço<span style="color:red;">*</span>
+        <input class="form-control" type="text" id="rua" size="60" placeholder="Seu endereço..." required /></label><br/>
+            </div>
+          <div class="form-group col-md-2">
+      <label for="inputNumb">Número</label>
+      <input type="number"class="form-control" size="8" maxlength="4" placeholder="Ex:52,74..." id="inputNumb">
+    </div>
+        <div class="form-group col-md-6">
+            <label  for="bairro">Bairro<span style="color:red;">*</span>
+                <input class="form-control" type="text" id="bairro" size="40" placeholder="Sua cidade..." required /></label><br/>
+        </div>
+          <div class="form-group col-md-6">
+        <label  for="cidade">Cidade<span style="color:red;">*</span>
+        <input class="form-control" type="text" id="cidade" size="40" placeholder="Sua cidade..." required /></label><br/>
+            </div>
+          <div class="form-group col-md-6">
+        <label for="uf">Estado<span style="color:red;">*</span>
+        <input class="form-control" type="text" placeholder="Seu estado..." id="uf" size="10"/></label><br/>
+
+          <div class="form-group col-md-6">
+         <label for="complemento">Complemento<span style="color:red;">*</span>
+         <input class="form-control" type="text" placeholder="Casa,Apartamento..." id="complemento" size="15"/></label><br/>
+              </div>
+          <div>
+          </div>
+          <div class="form-group">
+  <button type="submit" class="btn btn-primary">Enviar</button>
+  <div class="form-group col-md-6">
+        <label for="template">ID:
+        <input type="text" class="form-control" id="template" size="40" required/></label><br/>
+          </div>
+    </div>
+    </fieldset>
+      </form>
+    </div>
+    </body>
+
+    </html>
